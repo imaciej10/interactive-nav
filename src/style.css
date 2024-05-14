@@ -9,3 +9,36 @@
   font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
   font-weight: normal;
 }
+
+nav {
+  padding: 1rem;
+  width: 100vw;
+  height: 50px;
+  background: rgb(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menuBtn,
+.openNav {
+  display: inline-block;
+  width: 15ch;
+  border: none;
+  background: none;
+  font-size: 2rem;
+  color: yellow;
+}
+
+.menuBtn {
+  transform: scale(0);
+  transition: 200ms ease-in-out;
+}
+.menuBtn.active {
+  transform: scale(1);
+}
+
+button.openNav {
+  margin-right: auto;
+  width: 2ch;
+}
