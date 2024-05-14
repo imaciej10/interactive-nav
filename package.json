@@ -1,0 +1,28 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "basic template for nav ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imaciej10/webpack-template.git"
+  },
+  "author": "Maciej Irlik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imaciej10/webpack-template/issues"
+  },
+  "homepage": "https://github.com/imaciej10/webpack-template#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.2.0",
+    "css-loader": "^7.1.1",
+    "eslint": "^9.2.0",
+    "globals": "^15.2.0",
+    "html-webpack-plugin": "^5.6.0",
+    "style-loader": "^4.0.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
