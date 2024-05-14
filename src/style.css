@@ -42,3 +42,77 @@ button.openNav {
   margin-right: auto;
   width: 2ch;
 }
+
+.carousel {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(0, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.imageFrame {
+  position: relative;
+  border: 2px black solid;
+  height: 50%;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.next {
+  position: absolute;
+  right: -150px;
+}
+
+.previous {
+  position: absolute;
+  left: -150px;
+}
+
+.navigate {
+  border: 1px solid black;
+  background-color: yellow;
+  outline: none;
+  color: black;
+  width: 9ch;
+  padding: 0.5rem 0.8rem;
+  font-size: 1.6rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.navigate:active {
+  border: 2px white solid;
+}
+
+.slideMenu {
+  width: 250px;
+  height: 30px;
+  display: flex;
+  gap: 1rem;
+}
+
+.image {
+  height: 95%;
+  width: 95%;
+  border-radius: 1rem;
+}
+
+.imageButton {
+  height: 90%;
+  width: 90%;
+  border-radius: 2rem;
+  background-color: none;
+  border: none;
+}
+
+.imageButton.active {
+  border: 1px black solid;
+  background-color: rgb(255, 0, 0, 0.5);
+}
