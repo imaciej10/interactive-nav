@@ -17,9 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextButton = document.querySelector(".next");
   const prevButton = document.querySelector(".previous");
 
-  let activeImage;
+  let activeImage = 1;
 
-  activeImage = 1;
   activateDropdown(menuButtons, openNavBtn);
 
   sourceImages.forEach((imgSrc, index) => {
@@ -78,29 +77,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function resetActiveButtonClasses() {
     imgButtons.forEach((btn) => btn.classList.remove("active"));
   }
-
-  function updateNextImageIndex() {
-    if (activeImage === 0) {
-      activeImage = 1;
+  function updateImageIndex(direction) {
+    if (direction === "next") {
+      activeImage = (activeImage % 6) + 1; // Ensure activeImage stays within 1 to 6 range
+      return activeImage;
+    } else if (direction === "previous") {
+      activeImage = ((activeImage - 2 + 6) % 6) + 1; // Ensure activeImage stays within 1 to 6 range
       return activeImage;
     }
-    if (activeImage === 6) {
-      activeImage = 1;
-      return activeImage;
-    } else {
-      activeImage += 1;
-    }
-    return activeImage;
-  }
-
-  function updatePrevImageIndex() {
-    if (activeImage === 1) {
-      activeImage = 6;
-      return activeImage;
-    } else {
-      activeImage -= 1;
-    }
-    return activeImage;
   }
 
   imgButtons.forEach((btn) => {
@@ -122,32 +106,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  function handleNextImageEvent(event) {
+  function handleSwitchImageEvent(event, direction) {
     event.stopPropagation();
-    activeImage = updateNextImageIndex();
+    activeImage = updateImageIndex(direction);
     resetActiveButtonClasses();
     clearImageFrame(imageFrame);
     imageFrame.appendChild(images[activeImage - 1]);
     imgButtons[activeImage - 1].classList.add("active");
   }
 
-  function handlePrevImageEvent(event) {
-    event.stopPropagation();
-    updatePrevImageIndex();
-    resetActiveButtonClasses();
-    clearImageFrame(imageFrame);
-    imageFrame.appendChild(images[activeImage - 1]);
-    imgButtons[activeImage - 1].classList.add("active");
-  }
-
-  nextButton.addEventListener("click", (event) => handleNextImageEvent(event));
-  prevButton.addEventListener("click", (event) => handlePrevImageEvent(event));
+  nextButton.addEventListener("click", (event) =>
+    handleSwitchImageEvent(event, "next")
+  );
+  prevButton.addEventListener("click", (event) =>
+    handleSwitchImageEvent(event, "previous")
+  );
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") {
-      handleNextImageEvent(event);
+      handleSwitchImageEvent(event, "next");
     } else if (event.key === "ArrowLeft") {
-      handlePrevImageEvent(event);
+      handleSwitchImageEvent(event, "previous");
     }
   });
 });
